@@ -2,14 +2,19 @@
 import { ref, watch } from 'vue';
 import useMasonry from '../composables/useMasonry'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   items: T[]
   columnsNum: number
   columnWidth: number
-}>()
+  gap: number
+}>(), {
+  columnsNum: 3,
+  columnWidth: 200,
+  gap: 20,
+})
 const masonryRef = ref<HTMLDivElement | null>(null)
 
-const { columns, redraw } = useMasonry<T>({
+const { columns, redraw } = useMasonry({
   items: props.items,
   masonryRef: masonryRef,
   columnsNum: props.columnsNum,
@@ -22,9 +27,22 @@ watch(() => props.columnsNum, (newValue) => {
 </script>
 
 <template>
-  <div ref="masonryRef" class="container">
-    <div v-for="column, columnIndex in columns" :key="columnIndex" :data-index="columnIndex" class="column" :style="{ width: `${columnWidth}px` }">
+  <div 
+  ref="masonryRef" 
+  class="container" 
+  :style="{
+    gap: `${gap}px`,
+  }">
+    <div 
+    v-for="column, columnIndex in columns" 
+    :key="columnIndex" 
+    :data-index="columnIndex" 
+    class="column" 
+    :style="{
+      gap: `${gap}px`,
+      width: `${columnWidth}px`}">
       <div
+        class="item" 
         v-for="item, row in column.items"
         :key="row"
       >
@@ -41,10 +59,14 @@ watch(() => props.columnsNum, (newValue) => {
 <style scoped>
 .container{
   display: flex;
-  gap: 0.5rem;
 }
+
 .column{
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.item{
+  display: flex;
 }
 </style>
