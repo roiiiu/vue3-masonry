@@ -3,11 +3,16 @@
   "private": false,
   "version": "0.1.7",
   "type": "module",
-  "main": "./src/index.ts",
   "files": [
-    "dist/*",
-    "src/**/*.vue"
+    "dist"
   ],
+  "main": "./dist/vue3-masonry.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-masonry.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
   "author": {
     "name": "roiiiu",
     "email": "lyt2980999208@gmail.com"

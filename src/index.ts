@@ -1,26 +1,10 @@
-import type { App, Plugin } from 'vue'
+import type { App } from 'vue';
+import Masonry from "@/Masonry.vue";
 
-import component from '@/Masonry.vue'
-
-export type MasonryComponent = typeof component
-
-type MasonryPlugin = MasonryComponent & Plugin
-
-const Masonry: MasonryPlugin =
-  /* #__PURE__ */ ((): MasonryPlugin => {
-    const installable = component as unknown as MasonryPlugin
-
-    installable.install = (app: App) => {
-      app.component('Masonry', installable)
-    }
-
-    return installable
-  })()
-
-declare module 'vue' {
-  export interface GlobalComponents {
-    Masonry: MasonryComponent
+export default {
+  install: (app: App) => {
+    app.component('Masonry', Masonry);
   }
-}
+};
 
-export default Masonry
+export { Masonry };
