@@ -19,16 +19,6 @@ export default defineConfig({
       // into your library
       external: ['vue'],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        chunkFileNames: "common/[name].js",
-        entryFileNames: (file) => {
-          if (file.name == "index") {
-            return "index.js";
-          } else {
-            return "[name]/index.js";
-          }
-        },
         globals: {
           vue: 'Vue',
         },
