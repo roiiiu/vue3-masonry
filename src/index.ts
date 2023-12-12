@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import Masonry from './components/Masonry.vue'
+import Masonry from './ui/Masonry.vue'
 
 
 export default {
