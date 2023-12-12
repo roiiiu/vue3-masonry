@@ -29,20 +29,28 @@ watch(() => props.columnsNum, (newValue) => {
 <template>
   <div 
   ref="masonryRef" 
-  class="container" 
+  
   :style="{
     gap: `${gap}px`,
+    display:'flex'
   }">
     <div 
     v-for="column, columnIndex in columns" 
     :key="columnIndex" 
     :data-index="columnIndex" 
-    class="column" 
+   
     :style="{
       gap: `${gap}px`,
-      width: `${columnWidth}px`}">
+      width: `${columnWidth}px`,
+      display:'flex',
+      flexDirection:'column'
+    }
+      "
+      >
       <div
-        class="item" 
+        :style="{
+          display:'flex',
+        }"
         v-for="item, row in column.items"
         :key="row"
       >
