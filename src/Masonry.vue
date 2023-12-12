@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends {width: number,height:number}">
 import { ref, watch } from 'vue';
-import useMasonry from '../composables/useMasonry'
+import useMasonry from './composables/useMasonry'
 
 const props = withDefaults(defineProps<{
   items: T[]

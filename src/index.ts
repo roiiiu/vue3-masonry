@@ -1,6 +1,6 @@
 import type { App, Plugin } from 'vue'
 
-import component from './components/Masonry.vue'
+import component from './Masonry.vue'
 
 export type MasonryComponent = typeof component
 
