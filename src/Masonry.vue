@@ -56,17 +56,3 @@ watch(() => props.columnsNum, (newValue) => {
   </div>
 </template>
 
-<style scoped>
-.container{
-  display: flex;
-}
-
-.column{
-  display: flex;
-  flex-direction: column;
-}
-
-.item{
-  display: flex;
-}
-</style>
